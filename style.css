@@ -43,9 +43,5 @@ input:active, button:active, a:active {
 }
 
 canvas {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ccc;
-    display: block;
-    margin: auto;
+    display: none;
 }
