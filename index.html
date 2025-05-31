@@ -17,7 +17,8 @@
     <input type="text" id="nameInput" placeholder="名前を入力" size="30"><br><br>
     <button onclick="generate()">画像を生成</button>
     <br>
-    <img id="outputImage" alt="生成された画像" style="max-width: 100%; display: none; margin-top: 10px;">
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    <img id="outputImage" style="display: none; max-width: 100%; height: auto;" alt="生成された画像">
     <br>
     <button onclick="saveImage()">画像を保存</button>
 
