@@ -24,6 +24,8 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
 
 document.getElementById('generateButton').addEventListener('click', () => {
     document.fonts.ready.then(() => {
+        generate();
+        generate();
         generate();  // フォント読み込みが完了してから描画する
     });
 });
