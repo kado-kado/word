@@ -22,6 +22,12 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
     });
 }
 
+document.getElementById('generateButton').addEventListener('click', () => {
+    document.fonts.ready.then(() => {
+        generate();  // フォント読み込みが完了してから描画する
+    });
+});
+
 function generate() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
