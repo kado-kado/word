@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>迷言を画像に</h1>
@@ -16,20 +17,19 @@
     <input type="text" id="nameInput" placeholder="名前を入力" size="30"><br><br>
     <button id="generateButton">画像を生成</button>
     <br>
+    <p>長押しして保存できます。</p>
     <canvas id="canvas" width="1280" height="720"></canvas>
     <img id="outputImage" style="display: none; max-width: 100%; height: auto;" alt="生成された画像">
-    <br>
-    <button onclick="saveImage()">画像を保存</button>
 
     <hr style="margin: 2em 0; border: none; border-top: 1px solid #ccc;">
         <h3>Credit</h3>
-        <p>ver.1.1.2</p>
+        <p>ver.1.1.3</p>
         <p>Made by <a href="#" target="_blank">飛行機</a></p>
         <h4>Special Thanks</h4>
         <p>Powered by <a href="https://fonts.google.com/specimen/Zen+Maru+Gothic" target="_blank">Google Fonts(Zen Maru Gothic)</a></p>
         <p>Hosted source on <a href="https://github.com/" target="_blank">GitHub</a></p>
         <p>Deployed by <a href="https://github.com/" target="_blank">GitHub</a></p>
         <p>Deployed by <a href="https://pages.cloudflare.com/" target="_blank">Cloudflare Pages</a></p>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

@@ -22,12 +22,10 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
     });
 }
 
-document.getElementById('generateButton').addEventListener('click', () => {
-    document.fonts.ready.then(() => {
-        generate();
-        generate();
-        generate();  // フォント読み込みが完了してから描画する
-    });
+document.getElementById('generateButton').addEventListener('click', async () => {
+    await document.fonts.ready;
+    generate();
+    alert('フォントが適応されない場合は、「画像を生成」を二回押してください。')
 });
 
 function generate() {
