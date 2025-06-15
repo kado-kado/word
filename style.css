@@ -169,3 +169,7 @@ a:active {
         padding: 1rem;
     }
 }
+
+canvas {
+    display: none;
+}
