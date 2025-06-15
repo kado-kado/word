@@ -1,21 +1,25 @@
 function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
-    const words = text.split('');
-    let line = '';
+    const paragraphs = text.split('\n'); // 改行で分割
     const lines = [];
 
-    for (let i = 0; i < words.length; i++) {
-        const testLine = line + words[i];
-        const testWidth = ctx.measureText(testLine).width;
-        if (testWidth > maxWidth && line.length > 0) {
-            lines.push(line);
-            line = words[i];
-        } else {
-            line = testLine;
-        }
-    }
-    lines.push(line);
+    paragraphs.forEach(paragraph => {
+        const words = paragraph.split('');
+        let line = '';
 
-    const offsetY = -((lines.length - 1) * lineHeight) / 2; // 中央揃え用
+        for (let i = 0; i < words.length; i++) {
+            const testLine = line + words[i];
+            const testWidth = ctx.measureText(testLine).width;
+            if (testWidth > maxWidth && line.length > 0) {
+                lines.push(line);
+                line = words[i];
+            } else {
+                line = testLine;
+            }
+        }
+        lines.push(line);
+    });
+
+    const offsetY = -((lines.length - 1) * lineHeight) / 2;
     lines.forEach((l, i) => {
         ctx.strokeText(l, x, y + offsetY + i * lineHeight);
         ctx.fillText(l, x, y + offsetY + i * lineHeight);
@@ -25,7 +29,7 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
 document.getElementById('generateButton').addEventListener('click', async () => {
     await document.fonts.ready;
     generate();
-    alert('フォントが適応されない場合は、「画像を生成」を二回押してください。')
+    alert('フォントが適応されない場合は、「画像を生成」を二回押してください。');
 });
 
 function generate() {
@@ -50,7 +54,7 @@ function generate() {
         const maxTextWidth = canvas.width * 0.85;
         const textWidth = ctx.measureText(quote).width;
 
-        if (textWidth > maxTextWidth) {
+        if (quote.includes('\n') || textWidth > maxTextWidth) {
             wrapText(ctx, quote, canvas.width / 2, canvas.height / 2, maxTextWidth, 64);
         } else {
             ctx.strokeText(quote, canvas.width / 2, canvas.height / 2);
@@ -64,7 +68,14 @@ function generate() {
         ctx.strokeText(name, canvas.width - 20, canvas.height - 20);
         ctx.fillText(name, canvas.width - 20, canvas.height - 20);
 
-        // Canvas を画像にして表示（長押し保存）
+        // 右上の "made by ~"
+        ctx.font = '16px "Zen Maru Gothic", sans-serif';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'top';
+        ctx.strokeText('made by 飛行機', canvas.width - 20, 20);
+        ctx.fillText('made by 飛行機', canvas.width - 20, 20);
+
+        // Canvas を画像にして表示
         const outputImg = document.getElementById('outputImage');
         outputImg.src = canvas.toDataURL('image/png');
         outputImg.style.display = 'block';

@@ -11,25 +11,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>迷言を画像に</h1>
-    <input type="file" id="imageInput" accept="image/*"><br><br>
-    <input type="text" id="quoteInput" placeholder="迷言を入力" size="30"><br><br>
-    <input type="text" id="nameInput" placeholder="名前を入力" size="30"><br><br>
-    <button id="generateButton">画像を生成</button>
-    <br>
-    <p>長押しして保存できます。</p>
-    <canvas id="canvas" width="1280" height="720"></canvas>
-    <img id="outputImage" style="display: none; max-width: 100%; height: auto;" alt="生成された画像">
+    <nav id="sidebar">
+        <h2>AES-URL</h2>
+        <ul class="menu-list">
+            <li><a href="#" onclick="showSection('Main')">Main</a></li>
+            <li><a href="#" onclick="showSection('Use')">Use</a></li>
+            <li><a href="#" onclick="toggleTheme()">Toggle Theme</a></li>
+            <li><a href="#" onclick="showSection('Credits')">Credits</a></li>
+        </ul>
+    </nav>
 
-    <hr style="margin: 2em 0; border: none; border-top: 1px solid #ccc;">
-        <h3>Credit</h3>
-        <p>ver.1.1.3</p>
-        <p>Made by <a href="#" target="_blank">飛行機</a></p>
-        <h4>Special Thanks</h4>
-        <p>Powered by <a href="https://fonts.google.com/specimen/Zen+Maru+Gothic" target="_blank">Google Fonts(Zen Maru Gothic)</a></p>
-        <p>Hosted source on <a href="https://github.com/" target="_blank">GitHub</a></p>
-        <p>Deployed by <a href="https://github.com/" target="_blank">GitHub</a></p>
-        <p>Deployed by <a href="https://pages.cloudflare.com/" target="_blank">Cloudflare Pages</a></p>
+    <main id="main">
+        <section id="Main" class="content-section">
+            <h1>About</h1>
+                <p>
+                    これは、名言か迷言をそれっぽくするツールです。
+                    画像として、保存することができます。
+                </p>
+                <a href="#" onclick="showSection('Use')">使ってみる。</a>
+            </div>
+        </section>
+
+        <section id="Use" class="content-section">
+            <input type="file" id="imageInput" accept="image/*" style="width: 80%;"><br><br>
+            <textarea id="quoteInput" placeholder="名言か迷言を入力（改行できます）"rows="4" style="width: 80%;"></textarea><br><br>
+            <input type="text" id="nameInput" placeholder="名前を入力" style="width: 80%;"><br><br>
+            <button id="generateButton">画像を生成</button>
+            <br>
+            <p>長押しして保存できます。</p>
+            <canvas id="canvas" width="1280" height="720"></canvas>
+            <img id="outputImage" style="display: none; max-width: 100%; height: auto;" alt="生成された画像">
+        </section>
+
+        <section id="Credits" class="content-section">
+                <h3>Credit</h3>
+                <p>ver.2.0.0</p>
+                <p>Made by <a href="#" target="_blank">飛行機</a></p>
+                <h4>Special Thanks</h4>
+                <p>Powered by <a href="https://fonts.google.com/specimen/Zen+Maru+Gothic" target="_blank">Google Fonts(Zen Maru Gothic)</a></p>
+                <p>Hosted source on <a href="https://github.com/" target="_blank">GitHub</a></p>
+                <p>Deployed by <a href="https://github.com/" target="_blank">GitHub</a></p>
+                <p>Deployed by <a href="https://pages.cloudflare.com/" target="_blank">Cloudflare Pages</a></p>
+        </section>
+
     <script src="script.js" defer></script>
+    <script src="change-mode.js"></script>
+    <script src="change-sections.js"></script>
 </body>
 </html>
